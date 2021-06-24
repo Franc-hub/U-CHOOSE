@@ -9,10 +9,13 @@ const StudentFormPage = () => {
 		repeat: ""
 	});
 
+	const [checked, setChecked] = useState(true);
+
 	const [error, setError] = useState({
 		fullname: "error-invisible",
 		email: "error-invisible",
-		password: "error-invisible"
+		password: "error-invisible",
+		repeat: "error-invisible"
 	});
 	const validateEmail = email => {
 		const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -44,7 +47,7 @@ const StudentFormPage = () => {
 					value={formData.email}
 					onChange={e => setFormData({ ...formData, email: e.target.value })}
 				/>
-				<span>Podras ocultarlo en tus reviews</span>
+
 				<input
 					type="password"
 					placeholder="Contraseña"
@@ -53,20 +56,25 @@ const StudentFormPage = () => {
 				/>
 				<input
 					type="password"
-					placeholder="Contraseña"
+					placeholder="Repetir contraseña"
 					value={formData.repeat}
 					onChange={e => setFormData({ ...formData, repeat: e.target.value })}
 				/>
-				<input
-					type="radio"
-					value={formData.repeat}
-					onChange={e => setFormData({ ...formData, repeat: e.target.value })}
-				/>
-				<input
-					type="radio"
-					value={formData.repeat}
-					onChange={e => setFormData({ ...formData, repeat: e.target.value })}
-				/>
+
+				<input type="checkbox" onChange={e => setChecked(e.target.checked)} />
+				<span>Acepto los términso y condiciones</span>
+				<input type="checkbox" onChange={e => setChecked(e.target.checked)} />
+				<span>
+					Quiero recibir algún tipo de información sobre mi cuenta y contenidos relacionados con información
+					de diferetnes centros
+				</span>
+
+				<button className="" onClick="">
+					Crear Cuenta
+				</button>
+				<button className="" onClick="">
+					Registro con Google
+				</button>
 			</form>
 		</>
 	);
